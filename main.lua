@@ -8,7 +8,7 @@ function love.load(arg)
  quad = love.graphics.newQuad( 0, 10, 10, 10, w,h)
  local _w,_h, fl = love.window.getMode()
  love.window.setTitle("Yet Another Roguelike Tutorial" )
- love.window.setMode(500,500,fl)
+ love.window.setMode(600,600,fl)
  player_x = 250
  player_y = 250
 end
@@ -20,5 +20,5 @@ end
 
 
 function love.draw()
-	love.graphics.draw (img,quad, player_x, player_y)
+  love.graphics.draw (img,quad, player_x, player_y, 0, 3,3)
 end
