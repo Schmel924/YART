@@ -14,7 +14,7 @@ function love.load(arg)
  scale = 3
  fontsize = scale *10
  love.window.setMode(fontsize*20,fontsize*20,fl)
- player = newObj(player, 30,30)
+ player = newObj(player, 210,90)
  enemy = newObj(enemy, 60,60)
  createmap ()
 end
