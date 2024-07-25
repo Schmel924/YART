@@ -11,7 +11,9 @@ function love.load(arg)
  Flquad = love.graphics.newQuad ( 130, 10, 10, 10, w,h)
  local _w,_h, fl = love.window.getMode()
  love.window.setTitle("Yet Another Roguelike Tutorial" )
- love.window.setMode(600,600,fl)
+ scale = 3
+ fontsize = scale *10
+ love.window.setMode(fontsize*20,fontsize*20,fl)
  player = newObj(player, 30,30)
  enemy = newObj(enemy, 60,60)
  createmap ()
@@ -24,7 +26,7 @@ end
 
 function love.draw()
   
-  love.graphics.draw (img, ATquad, enemy.x, enemy.y, 0, 3,3)
+  love.graphics.draw (img, ATquad, enemy.x, enemy.y, 0, scale, scale)
   drawgamemap()
-  love.graphics.draw (img, ATquad, player.x, player.y, 0, 3,3) --draw player over everything
+  love.graphics.draw (img, ATquad, player.x, player.y, 0, scale, scale) --draw player over everything
 end

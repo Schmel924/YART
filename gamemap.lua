@@ -17,18 +17,19 @@ end
     gamemap = {}
     floor = newtile (floor, true, true)
     wall = newtile (wall, false, false)
-    gamemap.h = 600
-    gamemap.w = 600
-    for i = 1, gamemap.h , 30 do
+    local _w,_h,fl = love.window.getMode()
+    gamemap.h = _h
+    gamemap.w = _w
+    for i = 1, gamemap.h , fontsize do
       gamemap[i]={}
-      for j = 1, gamemap.w, 30 do
+      for j = 1, gamemap.w, fontsize do
         gamemap[i][j] = wall end end
   end 
   
   function drawgamemap()
-     for i = 1, gamemap.h , 30 do
-       for j = 1, gamemap.w, 30 do
-         if (gamemap[i][j] == wall) then   love.graphics.draw (img,Flquad, i, j, 0, 3,3) end
+     for i = 1, gamemap.h , fontsize do
+       for j = 1, gamemap.w, fontsize do
+         if (gamemap[i][j] == wall) then   love.graphics.draw (img,Flquad, i, j, 0, scale,scale) end
        end
      end
      
