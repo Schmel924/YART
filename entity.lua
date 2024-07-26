@@ -11,7 +11,7 @@ end
 
 
 function moveObj(t, dx, dy)
-  if t.x + dx < 0 or t.x + dx > 599 or t.y + dy < 0 or t.y + dy > 599 then return end
+  if t.x + dx < 1 or t.x + dx > worldsize or t.y + dy < 1 or t.y + dy > worldsize then return end
  if gamemap[t.x+dx][t.y+dy] == wall then return end
 t.x = t.x+dx
 t.y = t.y+dy
