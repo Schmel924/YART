@@ -7,10 +7,11 @@ function love.load(arg)
 		require("mobdebug").start()
 	end
 	img = love.graphics.newImage("dejavu10x10_gs_tc.png")
-	local h = img:getHeight()
+	local height = img:getHeight()
 	local w = img:getWidth()
-	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, h)
-	Flquad = love.graphics.newQuad(130, 10, 10, 10, w, h)
+	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, height)
+	Flquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
+	---@diagnostic disable-next-line: unused-local
 	local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	scale = 3
