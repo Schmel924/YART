@@ -1,38 +1,34 @@
 --gamemap
-function newtile(t, walkable, transparent)
+local function newtile(t, walkable, transparent)
 	--if t == nil then print ("newobj_nil")return end
 	t = {}
 	t.walkable = walkable or false
 	t.transparent = transparent or false
-	print("wall")
 	return t
 end
 
-function createmap()
-	gamemap = {}
-	floor = newtile(floor, true, true)
-	wall = newtile(wall, false, false)
+function Createmap()
+	Gamemap = {}
+	Floor = newtile(Floor, true, true)
+	Wall = newtile(Wall, false, false)
 
-	local _w, _h, fl = love.window.getMode()
-
-	for i = 1, worldsize do
-		gamemap[i] = {}
-		for j = 1, worldsize do
-			gamemap[i][j] = floor
+	for i = 1, Worldsize do
+		Gamemap[i] = {}
+		for j = 1, Worldsize do
+			Gamemap[i][j] = Floor
 			if j == 3 then
-				gamemap[i][j] = wall
+				Gamemap[i][j] = Wall
 			end
 		end
 	end
 end
 
-function drawgamemap()
-	for i = 1, worldsize do
-		for j = 0, worldsize do
-			if gamemap[i][j] == wall then
-				love.graphics.draw(img, Flquad, (i - 1) * fontsize, (j - 1) * fontsize, 0, scale, scale)
+function Drawgamemap()
+	for i = 1, Worldsize do
+		for j = 0, Worldsize do
+			if Gamemap[i][j] == Wall then
+				love.graphics.draw(ImgFont, Flquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
 			end
 		end
 	end
 end
-
