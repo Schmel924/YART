@@ -11,7 +11,6 @@ function love.load(arg)
 	local w = ImgFont:getWidth()
 	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, height)
 	Flquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
-	---@diagnostic disable-next-line: unused-local
 	local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	Scale = 3

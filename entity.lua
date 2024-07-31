@@ -5,7 +5,6 @@ function NewObj(t, px, py, pcolor)
 	t.x = px or 0
 	t.y = py or 0
 	t.color = pcolor or 1
-
 	return t
 end
 
