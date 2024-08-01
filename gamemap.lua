@@ -7,8 +7,8 @@ local function newtile(t, walkable, transparent)
 	return t
 end
 local function CenterRoom(x,y,w,h)
-	local cx = w/2 + x
-	local cy = h/2 + y
+	local cx = math.floor(w/2 + x)
+	local cy = math.floor(h/2 + y)
 	return cx, cy
 end
 
@@ -23,22 +23,32 @@ local function innerSlice(x,y,w,h)
 	return t
 end
 
-local function plotline(x1,y1,x2,y2)
-	if math.random() < 0.5 then
-		for i = x1,x2 do
-			Gamemap[i][y1] = Floor
-		end
-		for j = y1, y2 do
-			Gamemap[x2][j] = Floor
-		end
-else
-		for i = y1,y2 do
-			Gamemap[x1][i] = Floor
-		end
-		for j = x1, x2 do
-			Gamemap[j][y2] = Floor
-		end
+local function plotXine(cy,x1,x2)
+	local k = 1
+	if x2 < x1 then k = -1 end
+	for i = x1,x2,k do
+		Gamemap[i][cy] = Floor
 	end
+end
+
+local function plotVine(cx,y1,y2)
+	local k = 1
+	if y2 < y1 then k = -1 end
+	for i = y1,y2,k do
+		print(cx)
+		Gamemap[cx][i] = Floor
+	end
+end
+
+local function plotline(x1,y1,x2,y2)
+	local cx,cy
+	if math.random() < 0.5 then
+		cx = x1; cy = y2
+	else
+		cx = x2; cy = y1
+	end
+		plotVine(cx,y1,y2)
+		plotXine(cy,x1,x2)
 end
 
 local function RectangularRoom(x,y,w,h)
