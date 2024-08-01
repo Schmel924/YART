@@ -18,7 +18,6 @@ local function innerSlice(x,y,w,h)
 	for i =1,w do
 		t[i]={}
 		for j=1,h do
-			print(Gamemap[x+i-1][y+j-1].walkable)
 		t[i][j] = Gamemap[x+i-1][y+j-1]
 		end
 	end
@@ -31,16 +30,28 @@ local function RectangularRoom(x,y,w,h)
 	y = y or 4
 	w = w or 4
 	h = h or 4
-	local x2 = x + w
-	local y2 = y+h
 	local t = {}
-	t.x1 = x
-	t.y1 = y
-	t.x2 = x2
-	t.y2 = y2
+	t.x = x
+	t.y = y
+	t.w=w
+	t.h = h
 	t.cx, t.cy = CenterRoom(x,y,w,h)
 	t.slice = innerSlice(x,y,w,h)
 	return t
+end
+
+local function GenerateDungeon()
+	local rooms = {}
+	rooms[1] = RectangularRoom(4,4,4,4)
+	rooms[2] = RectangularRoom(8,12,4,4)
+	print(rooms[1].w)
+	for k,v in pairs(rooms) do
+		for i = 1,v.w do
+			for j = 1,v.h do
+				Gamemap[v.x+i-1][v.y+j-1] = Floor
+			end
+		end
+	end
 end
 
 function Createmap()
@@ -55,7 +66,7 @@ function Createmap()
 			Gamemap[i][j] = Wall
 		end
 	end
-	RectangularRoom()
+	GenerateDungeon()
 end
 
 function Drawgamemap()
