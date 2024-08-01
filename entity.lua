@@ -12,7 +12,7 @@ function MoveObj(t, dx, dy)
 	if t.x + dx < 1 or t.x + dx > Worldsize or t.y + dy < 1 or t.y + dy > Worldsize then
 		return
 	end
-	if Gamemap[t.x + dx][t.y + dy] == Wall then
+	if Gamemap[t.x + dx][t.y + dy].walkable == false then
 		return
 	end
 	t.x = t.x + dx
