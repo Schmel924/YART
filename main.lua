@@ -28,5 +28,9 @@ function love.update(dt) end
 function love.draw()
 	--love.graphics.draw(img, ATquad, (enemy.x - 1) * Fontsize, (enemy.y - 1) * Fontsize, 0, Scale, Scale)
 	Drawgamemap()
+	--change color for one thing routine
+	local r,g,b,a = love.graphics.getColor()
+	love.graphics.setColor(1,0,0,1)
 	love.graphics.draw(ImgFont, ATquad, (Player.x - 1) * Fontsize, (Player.y - 1) * Fontsize, 0, Scale, Scale) --draw player over everything
+	love.graphics.setColor(r,g,b,a)
 end
