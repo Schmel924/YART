@@ -1,6 +1,6 @@
 # Yet another roguelike tutorial
 
-Based on tutorials from r/RoguelikeDev
+Based on [tutorials from r/RoguelikeDev](https://www.reddit.com/r/roguelikedev/comments/1dt8bqm/roguelikedev_does_the_complete_roguelike_tutorial/)
 
 ## Day 0
 It starts from choosing the enviroment. 
