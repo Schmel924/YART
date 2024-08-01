@@ -17,4 +17,5 @@ function MoveObj(t, dx, dy)
 	end
 	t.x = t.x + dx
 	t.y = t.y + dy
+	MakeVisible()
 end

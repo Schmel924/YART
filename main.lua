@@ -1,6 +1,7 @@
 require("Keypod")
 require("entity")
 require("gamemap")
+require("fov")
 
 function love.load(arg)
 	if arg[#arg] == "-debug" then
@@ -14,7 +15,8 @@ function love.load(arg)
 	local height = ImgFont:getHeight()
 	local w = ImgFont:getWidth()
 	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, height)
-	Flquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
+	Wlquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
+	Flquad = love.graphics.newQuad(100,20,10,10,w,height)
 	local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	Scale = 3

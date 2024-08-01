@@ -106,8 +106,23 @@ local function GenerateDungeon()
 	end
 end
 
+local function VisibilityMask()
+	Gamemap_vis = {}
+	Gamemap_prev_vis = {}
+	for i = 1, Worldsize do
+		Gamemap_vis[i]={}
+		Gamemap_prev_vis[i] = {}
+		for j = 1, Worldsize do
+		Gamemap_vis[i][j] = false
+		Gamemap_prev_vis[i][j]=false
+		end
+	end
+end
+
 function Createmap()
 	Gamemap = {}
+	VisibilityMask()
+
 
 	Floor = newtile(Floor, true, true)
 	Wall = newtile(Wall, false, false)
@@ -116,6 +131,8 @@ function Createmap()
 		Gamemap[i] = {}
 		for j = 1, Worldsize do
 			Gamemap[i][j] = Wall
+			Gamemap[i][j].Visible = false
+			Gamemap[i][j].Seen = false
 		end
 	end
 	GenerateDungeon()
@@ -125,7 +142,28 @@ function Drawgamemap()
 	for i = 1, Worldsize do
 		for j = 0, Worldsize do
 			if Gamemap[i][j] == Wall then
+				if Gamemap_vis[i][j] == true then
+				love.graphics.draw(ImgFont, Wlquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
+				else
+					if Gamemap_prev_vis[i][j] == true then
+	local r,g,b,a = love.graphics.getColor()
+	love.graphics.setColor(r*0.5,g*0.5,b*0.5,a)
+				love.graphics.draw(ImgFont, Wlquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
+	love.graphics.setColor(r,g,b,a)
+					end
+				end
+			end 
+			if  Gamemap[i][j] == Floor then
+				if Gamemap_vis[i][j] == true then
 				love.graphics.draw(ImgFont, Flquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
+				else
+					if Gamemap_prev_vis[i][j] == true then
+	local r,g,b,a = love.graphics.getColor()
+	love.graphics.setColor(r*0.5,g*0.5,b*0.5,a)
+				love.graphics.draw(ImgFont, Flquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
+	love.graphics.setColor(r,g,b,a)
+					end
+				end
 			end
 		end
 	end
