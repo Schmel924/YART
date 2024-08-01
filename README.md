@@ -4,8 +4,8 @@ Based on tutorials from r/RoguelikeDev
 
 ## Day 0
 It starts from choosing the enviroment. 
-I started project in ZeroBrane Studio, but suddenly became aware about [kickstart.nvim](youtube.com/watch?v=m8C0Cq9Uv9o) project by TJ DeVries
-It, with some [advices](youtube.com/watch?v=w7i4amO_zaE) from ThePrimeagen, pushed me deep in a rabbit hole.  
+I started project in ZeroBrane Studio, but suddenly became aware about [kickstart.nvim](https://youtube.com/watch?v=m8C0Cq9Uv9o) project by TJ DeVries.  
+It, with some [advices](https://youtube.com/watch?v=w7i4amO_zaE) from ThePrimeagen, pushed me deep in a rabbit hole.  
 I learned a fair share about NeoVim, it's plugins, some new stuff about fuzzy-finder and tree-sitter, realized that LSP are a new norm, so a lot.
 
 All this time i wasn't making progress. 
