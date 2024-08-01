@@ -79,7 +79,7 @@ end
 local function GenerateDungeon()
 	local rooms = {}
 	local room_count = 0
-	while room_count <= Max_rooms do
+	while room_count <= Max_rooms  do
 		::another::
 		local w = math.random(Room_min_size,Room_max_size)
 		local h = math.random(Room_min_size,Room_max_size)
@@ -87,11 +87,13 @@ local function GenerateDungeon()
 		local y = math.random(1,Worldsize-h-1)
 		local nroom = RectangularRoom(x,y,w,h)
 		local bbaa = false
-		for k=1,room_count-1   do
+		for k=1,room_count   do
 			if AABB(nroom,rooms[k])  then bbaa = true break end
 		end
-		if bbaa then print("intercept") goto another end
+		if bbaa then  goto another end
 		room_count = room_count + 1
+		nroom.count = room_count
+		if room_count == 1 then Player.x = nroom.cx; Player.y=nroom.cy end
 		rooms[room_count] = nroom
 		for i = nroom.x,nroom.x2-1 do
 			for j =nroom.y,nroom.y2-1 do

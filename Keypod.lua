@@ -5,5 +5,5 @@ function love.keypressed(key, scancode, isrepeat)
 	if key == "right" then MoveObj(Player, 1, 0) end
 	if key == "left" then MoveObj(Player, -1, 0)end
 	--if (key == "space") then enemy.x = math.abs(enemy.x+Player.x)/2 end
-	if key == "escape" then love.event.quit() end
+	if key == "escape" then love.event.quit("restart") end
 end
