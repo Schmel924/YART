@@ -87,15 +87,14 @@ local function GenerateDungeon()
 		local y = math.random(1,Worldsize-h-1)
 		local nroom = RectangularRoom(x,y,w,h)
 		local bbaa = false
-		for k,v in pairs(rooms) do
-		if k == room_count or room_count == 0 then break end
-			if AABB(nroom, v) then bbaa = true break end
+		for k=1,room_count-1   do
+			if AABB(nroom,rooms[k])  then bbaa = true break end
 		end
-		if bbaa then goto another end
+		if bbaa then print("intercept") goto another end
 		room_count = room_count + 1
 		rooms[room_count] = nroom
-		for i = nroom.x,nroom.w do
-			for j =nroom.y,nroom.h do
+		for i = nroom.x,nroom.x2-1 do
+			for j =nroom.y,nroom.y2-1 do
 				Gamemap[i][j] = Floor
 			end
 		end
