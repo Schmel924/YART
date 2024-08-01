@@ -6,6 +6,10 @@ function love.load(arg)
 	if arg[#arg] == "-debug" then
 		require("mobdebug").start()
 	end
+	math.randomseed(os.time())
+	Room_max_size = 10
+	Room_min_size = 4
+	Max_rooms =5
 	ImgFont = love.graphics.newImage("dejavu10x10_gs_tc.png")
 	local height = ImgFont:getHeight()
 	local w = ImgFont:getWidth()
