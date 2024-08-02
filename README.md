@@ -44,3 +44,6 @@ TCOD just gives a solution, but didn't disclose underlying mechanic. Well, then 
 My first reaction was to use Love2d wiki and i found some FOV [implementation](https://github.com/markandgo/Lua-FOV) that worked just as you expect for 11yo code snippet for a highly evolving framework.
 
 Now to fixing it... It has really helpful links to roguebasin with detailed explanations of algorhitms.
+Algoritm found on roguebasin (of all the places) was leading to the site of one [Adam Milazzo](http://www.adammil.net/blog/v125_roguelike_vision_algorithms.html)
+Well, nice code and comments and all, and yet some errors, which made me tear hair out. But now!!
+Now The Fov is working and i am already moving to part 5! Other agents and interacting!
