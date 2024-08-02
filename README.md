@@ -36,3 +36,7 @@ Oh boy, so many warnings.
 
 ## Part 3
 Things i lack at this moment: engine, event queue, color tokens. But that won't stop me from generation a dungeon!
+
+Dungeon was generated, with some hiccups (mostly counting by 1 error), now there is FOV problem. 
+
+TCOD just gives a solution, but didn't disclose underlying mechanic. Well, then i will search elsewhere.
