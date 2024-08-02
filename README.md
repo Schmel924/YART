@@ -40,3 +40,7 @@ Things i lack at this moment: engine, event queue, color tokens. But that won't 
 Dungeon was generated, with some hiccups (mostly counting by 1 error), now there is FOV problem. 
 
 TCOD just gives a solution, but didn't disclose underlying mechanic. Well, then i will search elsewhere.
+
+My first reaction was to use Love2d wiki and i found some FOV [implementation](https://github.com/markandgo/Lua-FOV) that worked just as you expect for 11yo code snippet for a highly evolving framework.
+
+Now to fixing it... It has really helpful links to roguebasin with detailed explanations of algorhitms.

@@ -23,9 +23,10 @@ function love.load(arg)
 	Fontsize = Scale * 10
 	Worldsize = 20
 	love.window.setMode(Fontsize * Worldsize, Fontsize * Worldsize, fl)
-	Player = NewObj(Player, 5, 5)
+	Player = NewObj(Player, 0,0)
 	-- enemy = newObj(enemy, 3, 3)
 	Createmap()
+	Compute(Player, Fov_radius)
 end
 
 function love.update(dt) end
