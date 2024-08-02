@@ -11,6 +11,7 @@ function love.load(arg)
 	Room_max_size = 8
 	Room_min_size = 2
 	Max_rooms = 6
+	Max_monsters_per_room = 2
 	ImgFont = love.graphics.newImage("dejavu10x10_gs_tc.png")
 	local height = ImgFont:getHeight()
 	local w = ImgFont:getWidth()
@@ -35,6 +36,7 @@ function love.update(dt) end
 function love.draw()
 	--love.graphics.draw(img, ATquad, (enemy.x - 1) * Fontsize, (enemy.y - 1) * Fontsize, 0, Scale, Scale)
 	Drawgamemap()
+	DrawEntities()
 	--change color for one thing routine
 	local r,g,b,a = love.graphics.getColor()
 	love.graphics.setColor(1,0,0,1)
