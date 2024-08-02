@@ -47,3 +47,11 @@ Now to fixing it... It has really helpful links to roguebasin with detailed expl
 Algoritm found on roguebasin (of all the places) was leading to the site of one [Adam Milazzo](http://www.adammil.net/blog/v125_roguelike_vision_algorithms.html)
 Well, nice code and comments and all, and yet some errors, which made me tear hair out. But now!!
 Now The Fov is working and i am already moving to part 5! Other agents and interacting!
+
+
+## Part 5  
+that was surprisingly easy, after FOV stuff. Spawn enemies, then spawn some more. New check at movement if enemy is blocking the way. 
+
+I always think it is too risque to recheck all array of elements, but now computers are so powerfull and fast. Just don't let me write any AAA products.
+
+Hitting the enemies. tutorial suggest writing log of things, and i just table.removed() them. Felt nice to see token disappear after interaction. 
