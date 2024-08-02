@@ -9,16 +9,6 @@ function NewObj(t, px, py, pcolor)
 end
 
 function MoveObj(t, dx, dy)
-	if t.x + dx < 1 or t.x + dx > Worldsize or t.y + dy < 1 or t.y + dy > Worldsize then
-		return
-	end
-	if Gamemap[t.x + dx][t.y + dy].walkable == false then
-		return
-	end
-	for _, v in pairs(Entities) do
-		if v.x == t.x+dx and v.y == t.y+dy and v.blocker == true then return end
-	end
-
 	t.x = t.x + dx
 	t.y = t.y + dy
 	MakeVisible()
@@ -39,7 +29,6 @@ function GenerateAndPlaceMonsters(room)
 end
 
 function DrawEntities()
-
 	local r,g,b,a = love.graphics.getColor()
 	love.graphics.setColor(1,1,0,1)
 	for k,v in pairs(Entities) do
@@ -48,4 +37,27 @@ function DrawEntities()
 		end
 	end
 	love.graphics.setColor(r,g,b,a)
+end
+
+function Hit(v)
+table.remove(Entities,v)
+end
+
+
+function ActionDir(t, dx, dy)
+	if t.x + dx < 1 or t.x + dx > Worldsize or t.y + dy < 1 or t.y + dy > Worldsize then
+		return
+	end
+	if Gamemap[t.x + dx][t.y + dy].walkable == false then
+		return
+	end
+		for _, v in pairs(Entities) do
+		if v.x == t.x+dx and v.y == t.y+dy and v.blocker == true then
+			if v.name == "Enemy" then Hit(_) return
+				else return end
+		end
+	end
+	MoveObj(t,dx,dy)
+
+
 end

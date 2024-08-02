@@ -23,7 +23,7 @@ function love.load(arg)
 	Scale = 3
 	Fontsize = Scale * 10
 	Worldsize = 20
-	love.window.setMode(Fontsize * Worldsize, Fontsize * Worldsize, fl)
+	love.window.setMode(Fontsize * Worldsize, Fontsize * (Worldsize+2), fl)
 	Player = NewObj(Player, 0,0)
 	-- enemy = newObj(enemy, 3, 3)
 	Createmap()
@@ -42,4 +42,5 @@ function love.draw()
 	love.graphics.setColor(1,0,0,1)
 	love.graphics.draw(ImgFont, ATquad, (Player.x - 1) * Fontsize, (Player.y - 1) * Fontsize, 0, Scale, Scale) --draw player over everything
 	love.graphics.setColor(r,g,b,a)
+	love.graphics.print("Enemy left:"..#Entities, 0, Fontsize * Worldsize, 0, Scale)
 end
