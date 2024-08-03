@@ -55,3 +55,9 @@ that was surprisingly easy, after FOV stuff. Spawn enemies, then spawn some more
 I always think it is too risque to recheck all array of elements, but now computers are so powerfull and fast. Just don't let me write any AAA products.
 
 Hitting the enemies. tutorial suggest writing log of things, and i just table.removed() them. Felt nice to see token disappear after interaction. 
+
+
+### What is a good devlog without pictures?
+I present you THE GIF!
+
+![](LUA_YART.gif)
