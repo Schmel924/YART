@@ -34,7 +34,7 @@ local function compute(octant, origin, rangeLimit, x, top, bottom)
 		end
 		wasOpaque = -1 -- specifically non applicable
 		local y = topY
-		print("oct#"..octant.." " .. topY .. "==" .. y .. "<>" .. bottomY)
+		-- print("oct#"..octant.." " .. topY .. "==" .. y .. "<>" .. bottomY)
 		while y >= bottomY do
 			local tx,ty = origin.x, origin.y
 			local dx,dy = octants[octant](x,y)
