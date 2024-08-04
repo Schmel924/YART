@@ -49,21 +49,65 @@ function Hit(v)
 table.remove(Entities,v)
 end
 
-
-function ActionDir(t, dx, dy)
+local function FreeToMove(t,dx,dy)
+	
 	if t.x + dx < 1 or t.x + dx > Worldsize or t.y + dy < 1 or t.y + dy > Worldsize then
-		return
+		return false
 	end
 	if Gamemap[t.x + dx][t.y + dy].walkable == false then
-		return
+		return false
 	end
+	if dx== 0 and dy == 0 then print("Waiting...") return false end
+	return true
+end
+
+local function NoEnemyInAWay(t,dx,dy)
 		for _, v in pairs(Entities) do
 		if v.x == t.x+dx and v.y == t.y+dy and v.blocker == true then
-			if v.name == "Enemy" then Hit(_) return
-				else return end
+			if v.name == "Enemy" then Hit(_) return false
+				else return false end
 		end
 	end
+	return true
+end
+
+local function EntityMoveRandomly(k)
+	-- print(k .. "Wanders around...")
+end
+
+
+local function HitPlayer(k)
+	print(k.." kills you")
+	love.event.quit("restart")
+end
+
+local function EntityChaseAndAttack(k)
+	print(k .. "  Bloodlust!")
+	local x = Entities[k].x
+	local y = Entities[k].y
+	local px = Player.x
+	local py = Player.y
+	if (math.abs(x-px) == 1 and y-py == 0) or (x-px == 0 and math.abs(y-py) == 1) then HitPlayer(k) end
+end
+
+
+function EntitiesAct()
+	for k,v in pairs(Entities) do
+		if Gamemap_vis[v.x][v.y] == true then EntityChaseAndAttack(k)
+		else
+		EntityMoveRandomly(k) end
+	end
+end
+
+
+
+
+
+function ActionDirPlayer(t, dx, dy)
+	if FreeToMove(t,dx,dy) then
+		if NoEnemyInAWay(t,dx,dy) then
 	MoveObj(t,dx,dy)
-
-
+	end
+	end
+	EntitiesAct()
 end
