@@ -83,8 +83,8 @@ local function GenerateDungeon()
 		::another::
 		local w = math.random(Room_min_size,Room_max_size)
 		local h = math.random(Room_min_size,Room_max_size)
-		local x = math.random(1,Worldsize-w-1)
-		local y = math.random(1,Worldsize-h-1)
+		local x = math.random(1,Worldsize-w)
+		local y = math.random(1,Worldsize-h)
 		local nroom = RectangularRoom(x,y,w,h)
 		local bbaa = false
 		for k=1,room_count   do

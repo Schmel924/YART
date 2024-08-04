@@ -18,10 +18,16 @@ end
 Entities = {}
 
 function GenerateAndPlaceMonsters(room)
-	for i = 0, math.random(Max_monsters_per_room), 1 do
+	for i = 1, math.random(Max_monsters_per_room), 1 do
+		::anotherone::
+			local x = math.random(room.x,room.x2-1)
+			local y = math.random(room.y, room.y2-1)
+		for k, v in ipairs(Entities) do
+			if v.x == x and v.y == y then print("anotherone") goto anotherone end
+		end
 		table.insert(Entities, {
-			x = math.random(room.x,room.x2-1),
-			y = math.random(room.y, room.y2-1),
+			x = x,
+			y = y,
 			name = "Enemy",
 			blocker = true,
 		})
