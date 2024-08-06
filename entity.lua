@@ -71,8 +71,19 @@ local function NoEnemyInAWay(t,dx,dy)
 	return true
 end
 
+local function ActionDirEntity(k, dx, dy)
+	if FreeToMove(Entities[k],dx,dy) and NoEnemyInAWay(Entities[k],dx,dy) then
+		MoveObj(Entities[k],dx,dy)
+	end
+end
+
 local function EntityMoveRandomly(k)
-	-- print(k .. "Wanders around...")
+	dir = math.random(1,5)
+	if dir == 1 then ActionDirEntity(k, 0,-1) end
+	if dir == 2 then ActionDirEntity(k, 1,0) end
+	if dir == 3 then ActionDirEntity(k, -1,0) end
+	if dir == 4 then ActionDirEntity(k, 0,1) end
+	--if dir == 5 then  print(k .. "Wanders around...") end
 end
 
 
@@ -81,13 +92,27 @@ local function HitPlayer(k)
 	love.event.quit("restart")
 end
 
+local function FollowPlayer(k)
+	local x = Entities[k].x
+	local y = Entities[k].y
+	local px = Player.x
+	local py = Player.y
+	if (math.abs(x-px) > math.abs(y-py)) then
+		if x-px > 0 then ActionDirEntity(k, -1, 0) else ActionDirEntity(k, 1, 0) end
+	else
+		if y-py > 0 then ActionDirEntity(k, 0, -1) else ActionDirEntity(k, 0, 1) end
+	end
+end
+
 local function EntityChaseAndAttack(k)
 	print(k .. "  Bloodlust!")
 	local x = Entities[k].x
 	local y = Entities[k].y
 	local px = Player.x
 	local py = Player.y
-	if (math.abs(x-px) == 1 and y-py == 0) or (x-px == 0 and math.abs(y-py) == 1) then HitPlayer(k) end
+	if (math.abs(x-px) == 1 and y-py == 0) or (x-px == 0 and math.abs(y-py) == 1) then HitPlayer(k)
+	else FollowPlayer(k) 
+	end
 end
 
 
