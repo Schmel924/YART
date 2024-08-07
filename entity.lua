@@ -30,13 +30,14 @@ function GenerateAndPlaceMonsters(room)
 			y = y,
 			name = "Enemy",
 			blocker = true,
+			power = math.random(1,10),
 		})
 	end
 end
 
 function DrawEntities()
 	local r,g,b,a = love.graphics.getColor()
-	love.graphics.setColor(1,1,0,1)
+	love.graphics.setColor(Yellow)
 	for k,v in pairs(Entities) do
 		if Gamemap_vis[v.x][v.y] == true then
 	love.graphics.draw(ImgFont, ATquad, (v.x - 1) * Fontsize, (v.y - 1) * Fontsize, 0, Scale, Scale) --draw player over everything
@@ -47,6 +48,7 @@ end
 
 function Hit(v)
 table.remove(Entities,v)
+GrabLog("You killed "..v)
 end
 
 local function FreeToMove(t,dx,dy)
@@ -57,7 +59,7 @@ local function FreeToMove(t,dx,dy)
 	if Gamemap[t.x + dx][t.y + dy].walkable == false then
 		return false
 	end
-	if dx== 0 and dy == 0 then print("Waiting...") return false end
+	if dx== 0 and dy == 0 then GrabLog("Waiting...") return false end
 	return true
 end
 
@@ -83,13 +85,14 @@ local function EntityMoveRandomly(k)
 	if dir == 2 then ActionDirEntity(k, 1,0) end
 	if dir == 3 then ActionDirEntity(k, -1,0) end
 	if dir == 4 then ActionDirEntity(k, 0,1) end
-	--if dir == 5 then  print(k .. "Wanders around...") end
+	if dir == 5 then  GrabLog(k .. "  Wanders around...") end
 end
 
 
 local function HitPlayer(k)
-	print(k.." kills you")
-	love.event.quit("restart")
+	GrabLog(k.." hits you")
+	Player.hp = Player.hp - Entities[k].power
+	if Player.hp <= 0 then love.event.quit("restart") end
 end
 
 local function FollowPlayer(k)
@@ -105,7 +108,7 @@ local function FollowPlayer(k)
 end
 
 local function EntityChaseAndAttack(k)
-	print(k .. "  Bloodlust!")
+	GrabLog(k .. "  Bloodlust!")
 	local x = Entities[k].x
 	local y = Entities[k].y
 	local px = Player.x

@@ -144,11 +144,12 @@ function Drawgamemap()
 		for j = 0, Worldsize do
 			if Gamemap[i][j] == Wall then
 				if Gamemap_vis[i][j] == true then
+						-- love.graphics.setColor(White)
 				love.graphics.draw(ImgFont, Wlquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
 				else
 					if Gamemap_prev_vis[i][j] == true then
 	local r,g,b,a = love.graphics.getColor()
-	love.graphics.setColor(r*0.5,g*0.5,b*0.5,a)
+	love.graphics.setColor(Gray)
 				love.graphics.draw(ImgFont, Wlquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
 	love.graphics.setColor(r,g,b,a)
 					end
@@ -160,7 +161,7 @@ function Drawgamemap()
 				else
 					if Gamemap_prev_vis[i][j] == true then
 	local r,g,b,a = love.graphics.getColor()
-	love.graphics.setColor(r*0.5,g*0.5,b*0.5,a)
+	love.graphics.setColor(Gray)
 				love.graphics.draw(ImgFont, Flquad, (i - 1) * Fontsize, (j - 1) * Fontsize, 0, Scale, Scale)
 	love.graphics.setColor(r,g,b,a)
 					end
