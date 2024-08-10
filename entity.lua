@@ -66,7 +66,9 @@ end
 local function NoEnemyInAWay(t,dx,dy)
 		for _, v in pairs(Entities) do
 		if v.x == t.x+dx and v.y == t.y+dy and v.blocker == true then
-			if v.name == "Enemy" then Hit(_) return false
+			if v.name == "Enemy" then
+				if t == Player then Hit(_)  end  
+				return false
 				else return false end
 		end
 	end
