@@ -2,7 +2,7 @@ require("Keypod")
 require("entity")
 require("gamemap")
 require("fov")
-
+require("inventory")
 
 local function createColors()
 	Red = {1,0,0,1}
@@ -10,6 +10,7 @@ local function createColors()
 	White = {1,1,1,1}
 	Gray = {0.5,0.5,0.5,1}
 	Black = {0,0,0,1}
+	Green = {0,1,0,1}
 end
 
 function love.load(arg)
@@ -28,12 +29,12 @@ function love.load(arg)
 	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, height)
 	Wlquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
 	Flquad = love.graphics.newQuad(100,20,10,10,w,height)
-	local _w, _h, fl = love.window.getMode()
+	-- local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	Scale = 3
 	Fontsize = Scale * 10
 	Worldsize = 20
-	love.window.setMode(Fontsize * Worldsize, Fontsize * (Worldsize+3), fl)
+	love.window.setMode(Fontsize * Worldsize, Fontsize * (Worldsize+3) )
 	Player = NewObj(Player, 0,0)
 	-- enemy = newObj(enemy, 3, 3)
 		Player.hp = 100
@@ -91,4 +92,5 @@ love.graphics.setColor(Red)
 	renderHp()
 	love.graphics.print("HP: "..Player.hp, 0, Fontsize * Worldsize, 0, 1)
 	RenderLog()
+	Show_inventory() -- will not show if inventory not toggled
 end

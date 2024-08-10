@@ -6,4 +6,5 @@ function love.keypressed(key, scancode, isrepeat)
 	if key == "left" then ActionDirPlayer(Player, -1, 0)end
 	if (key == "space") then ActionDirPlayer(Player, 0,0) end
 	if key == "escape" then love.event.quit("restart") end
+	if key == 'i' then Toggle_inv_mod() end
 end
