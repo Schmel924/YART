@@ -93,6 +93,7 @@ local function GenerateDungeon()
 		if bbaa then  goto another end
 		room_count = room_count + 1
 		nroom.count = room_count
+		GenerateAndPlaceThings(nroom)
 		if room_count == 1 then Player.x = nroom.cx; Player.y=nroom.cy else
 	GenerateAndPlaceMonsters(nroom) end
 		rooms[room_count] = nroom

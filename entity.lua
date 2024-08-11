@@ -17,6 +17,23 @@ end
 --lets put enemies here too
 Entities = {}
 
+
+function GenerateAndPlaceThings(room)
+	for i = 1, math.random(Max_items_per_room), 1 do
+			local x = math.random(room.x,room.x2-1)
+			local y = math.random(room.y, room.y2-1)
+		table.insert(Entities, {
+			x = x,
+			y = y,
+			name = "Bottle",
+			blocker = false,
+			hp = 10,
+		})
+	end
+end
+
+
+
 function GenerateAndPlaceMonsters(room)
 	for i = 1, math.random(Max_monsters_per_room), 1 do
 		::anotherone::
@@ -37,10 +54,19 @@ end
 
 function DrawEntities()
 	local r,g,b,a = love.graphics.getColor()
-	love.graphics.setColor(Yellow)
 	for k,v in pairs(Entities) do
-		if Gamemap_vis[v.x][v.y] == true then
-	love.graphics.draw(ImgFont, ATquad, (v.x - 1) * Fontsize, (v.y - 1) * Fontsize, 0, Scale, Scale) --draw player over everything
+		if v.name == "Enemy" then
+			if Gamemap_vis[v.x][v.y] == true then
+				love.graphics.setColor(Yellow)
+				love.graphics.draw(ImgFont, ATquad, (v.x - 1) * Fontsize, (v.y - 1) * Fontsize, 0, Scale, Scale)
+				love.graphics.setColor(White)
+			end
+		elseif v.name == "Bottle" then
+			if Gamemap_vis[v.x][v.y] == true then
+				love.graphics.setColor(Green)
+				love.graphics.draw(ImgFont, BAquad, (v.x-1) *Fontsize, (v.y-1) *Fontsize, 0, Scale, Scale)
+				love.graphics.setColor(White)
+			end
 		end
 	end
 	love.graphics.setColor(r,g,b,a)
@@ -52,7 +78,6 @@ GrabLog("You killed "..v)
 end
 
 local function FreeToMove(t,dx,dy)
-	
 	if t.x + dx < 1 or t.x + dx > Worldsize or t.y + dy < 1 or t.y + dy > Worldsize then
 		return false
 	end
@@ -123,9 +148,12 @@ end
 
 function EntitiesAct()
 	for k,v in pairs(Entities) do
-		if Gamemap_vis[v.x][v.y] == true then EntityChaseAndAttack(k)
-		else
-		EntityMoveRandomly(k) end
+		if v.name == 'Enemy' then
+			if Gamemap_vis[v.x][v.y] == true then EntityChaseAndAttack(k)
+			else
+			EntityMoveRandomly(k)
+			end
+		end
 	end
 end
 

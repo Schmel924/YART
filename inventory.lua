@@ -14,6 +14,16 @@ hp = 10,
 })
 end
 
+
+function GrabItem()
+	for k, v in ipairs(Entities) do
+		if Player.x == v.x and Player.y == v.y and v.name == "Bottle" then
+		AddBottle()
+			table.remove(Entities, k)
+		end
+	end
+end
+
 function Show_inventory()
 if Inv_mode then
 		love.graphics.setColor(Black)

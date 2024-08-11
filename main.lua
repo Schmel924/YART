@@ -22,6 +22,7 @@ function love.load(arg)
 	Room_max_size = 8
 	Room_min_size = 2
 	Max_rooms = 6
+	Max_items_per_room = 2
 	Max_monsters_per_room = 2
 	ImgFont = love.graphics.newImage("dejavu10x10_gs_tc.png")
 	local height = ImgFont:getHeight()
@@ -29,6 +30,7 @@ function love.load(arg)
 	ATquad = love.graphics.newQuad(0, 10, 10, 10, w, height)
 	Wlquad = love.graphics.newQuad(130, 10, 10, 10, w, height)
 	Flquad = love.graphics.newQuad(100,20,10,10,w,height)
+	BAquad = love.graphics.newQuad(10,0,10,10,w,height)
 	-- local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	Scale = 3

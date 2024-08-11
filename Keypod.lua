@@ -14,4 +14,5 @@ function love.keypressed(key, scancode, isrepeat)
 	if key == "escape" then love.event.quit("restart") end
 	if key == 'i' then Toggle_inv_mod() end
 	if key == 'o' then AddBottle() end
+	if key == 'g' then GrabItem() end
 end
