@@ -162,6 +162,9 @@ end
 
 
 function ActionDirPlayer(t, dx, dy)
+	if dx == 0 and dy == 0 then 
+		GrabItem() 
+	end
 	if FreeToMove(t,dx,dy) then
 		if NoEnemyInAWay(t,dx,dy) then
 	MoveObj(t,dx,dy)
