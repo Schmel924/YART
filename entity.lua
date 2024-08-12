@@ -17,11 +17,35 @@ end
 --lets put enemies here too
 Entities = {}
 
+function DistanceToPlayer(k)
+      return math.sqrt((Player.x - Entities[k].x) ^ 2 + (Player.y - Entities[k].y) ^ 2)
+end
+
+function FindClosestEnemy()
+	local dist = Worldsize
+	local target = -1
+	for k,v in ipairs(Entities) do
+		if v.name == "Enemy" and DistanceToPlayer(k) < dist
+			then dist = DistanceToPlayer(k) target = k
+			end
+	end		
+return target
+end
+
 
 function GenerateAndPlaceThings(room)
 	for i = 1, math.random(Max_items_per_room), 1 do
 			local x = math.random(room.x,room.x2-1)
 			local y = math.random(room.y, room.y2-1)
+			if math.random(1,6) > 5 then 
+				table.insert(Entities, {
+					x = x,
+					y = y,
+					name = "Scroll",
+					blocker = false,
+					type = "Lightning",
+				})
+			else
 		table.insert(Entities, {
 			x = x,
 			y = y,
@@ -29,6 +53,7 @@ function GenerateAndPlaceThings(room)
 			blocker = false,
 			hp = 10,
 		})
+		end
 	end
 end
 
@@ -67,6 +92,12 @@ function DrawEntities()
 				love.graphics.draw(ImgFont, BAquad, (v.x-1) *Fontsize, (v.y-1) *Fontsize, 0, Scale, Scale)
 				love.graphics.setColor(White)
 			end
+				elseif v.name == "Scroll" then
+			if Gamemap_vis[v.x][v.y] == true then
+				love.graphics.setColor(Green)
+				love.graphics.draw(ImgFont, SCquad, (v.x-1) *Fontsize, (v.y-1) *Fontsize, 0, Scale, Scale)
+				love.graphics.setColor(White)
+			end	
 		end
 	end
 	love.graphics.setColor(r,g,b,a)
