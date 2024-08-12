@@ -7,19 +7,41 @@ Inv_mode = false
 local inv_lines = 4
 Selector = 1
 
+function AddScroll(type)
+table.insert(Inventory,{
+name = "Scroll",
+type = type,
+})
+end
+
 function AddBottle()
 table.insert(Inventory,{
 name = "bottle",
+name = "Bottle",
 hp = 10,
 })
 end
 
+function UseScroll(type)
+	if type == "Lightning" then
+		local k = FindClosestEnemy()
+		local x, y = Entities[k].x, Entities[k].y
+		if Gamemap_vis[x][y] then GrabLog("Lightning strikes "..k) table.remove(Entities,k) 
+		else GrabLog("Lightning fizzles... NOTARGET") end
+	end
+end
 
 function GrabItem()
 	for k, v in ipairs(Entities) do
-		if Player.x == v.x and Player.y == v.y and v.name == "Bottle" then
-		AddBottle()
-			table.remove(Entities, k)
+		if Player.x == v.x and Player.y == v.y then
+			if  v.name == "Bottle" then
+				AddBottle()
+				table.remove(Entities, k)
+			elseif v.name == "Scroll" then
+				AddScroll(v.type)
+				table.remove(Entities, k)
+			end
+		
 		end
 	end
 end
@@ -55,8 +77,13 @@ end
 
 function UseInventorySpace(sel)
 	if Inventory[sel] then
-		Player.hp = Player.hp + Inventory[sel].hp
-		table.remove(Inventory,sel)
+		if Inventory[sel].name == "Bottle" then
+				Player.hp = Player.hp + Inventory[sel].hp
+				table.remove(Inventory,sel)
+		elseif Inventory[sel].name == "Scroll" then
+				UseScroll(Inventory[sel].type)
+				table.remove(Inventory,sel)
+		end
 	else
 		GrabLog("Pockets are empty")
 	end
