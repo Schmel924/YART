@@ -133,8 +133,6 @@ function Createmap()
 		Gamemap[i] = {}
 		for j = 1, Worldsize do
 			Gamemap[i][j] = Wall
-			Gamemap[i][j].Visible = false
-			Gamemap[i][j].Seen = false
 		end
 	end
 	GenerateDungeon()
