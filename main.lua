@@ -3,6 +3,7 @@ require("entity")
 require("gamemap")
 require("fov")
 require("inventory")
+require("SaveLoad")
 
 local function createColors()
 	Red = {1,0,0,1}
@@ -46,6 +47,7 @@ function love.load(arg)
 	LinesCount = 4
 	Lines = {}
 	GrabLog("Welcome to the dungeon")
+	Save()
 end
 
 function love.update(dt) end
