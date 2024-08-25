@@ -15,4 +15,6 @@ function love.keypressed(key, scancode, isrepeat)
 	if key == 'i' then Toggle_inv_mod() end
 	if key == 'o' then AddBottle() end
 	if key == 'g' then GrabItem() end
+	if key == 'f1' then Save() end
+	if key == 'f2' then Load() end
 end

@@ -5,17 +5,20 @@ local path = love.filesystem.getUserDirectory( )
 
 
 function Save()
-  file, errorstr = love.filesystem.newFile( "data.txt", "w" )
-  file:write(TSerial.pack(Gamemap))
-  file:write("\n\r---\n\r")
-  file:write(TSerial.pack(Player))
-  file:write("\n\r---\n\r")
-  file:write(TSerial.pack(Entities))
-  file:write("\n\r---\n\r")
-  file:write(TSerial.pack(Inventory))
+  Sfile = love.filesystem.newFile( "data.txt", "w" )
+  Sfile:write(TSerial.pack(Gamemap))
+  Sfile:write("\n\r---\n\r")
+  Sfile:write(TSerial.pack(Player))
+  Sfile:write("\n\r---\n\r")
+  Sfile:write(TSerial.pack(Entities))
+  Sfile:write("\n\r---\n\r")
+  Sfile:write(TSerial.pack(Inventory))
 
-file:close()
+Sfile:close()
 end
 
 function Load()
+  Lfile = love.filesystem.newFile("data.txt", "r")
+  local gmap = TSerial.unpack(Lfile:read())
+  Gamemap = gmap
 end
