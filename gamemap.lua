@@ -108,7 +108,7 @@ local function GenerateDungeon()
 	end
 end
 
-local function VisibilityMask()
+function VisibilityMask()
 	Gamemap_vis = {}
 	Gamemap_prev_vis = {}
 	for i = 1, Worldsize do
