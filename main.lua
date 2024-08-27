@@ -47,7 +47,6 @@ function love.load(arg)
 	LinesCount = 4
 	Lines = {}
 	GrabLog("Welcome to the dungeon")
-	Save()
 end
 
 function love.update(dt) end
