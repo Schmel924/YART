@@ -33,6 +33,7 @@ function love.load(arg)
 	Flquad = love.graphics.newQuad(100,20,10,10,w,height)
 	BAquad = love.graphics.newQuad(10,0,10,10,w,height)
 	SCquad = love.graphics.newQuad(40,0,10,10,w,height)
+	LAquad = love.graphics.newQuad(50,18,10,10,w,height)
 	-- local _w, _h, fl = love.window.getMode()
 	love.window.setTitle("Yet Another Roguelike Tutorial")
 	Scale = 3
@@ -42,6 +43,7 @@ function love.load(arg)
 	Player = NewObj(Player, 0,0)
 	-- enemy = newObj(enemy, 3, 3)
 		Player.hp = 100
+	Level = 1
 	Createmap()
 	Compute(Player, Fov_radius)
 	LinesCount = 4
@@ -51,6 +53,16 @@ end
 
 function love.update(dt) end
 -- event queue
+
+function GoToNextLvl(l)
+	Level = l + 1
+	Createmap()
+	Compute(Player, Fov_radius)
+	LinesCount = 4
+	Lines = {}
+	GrabLog("Welcome to the Next LVL")
+	love.window.setTitle("Yet Another Roguelike Tutorial" .. Level)
+end
 
 local function renderHp()
 	local r,g,b,a = love.graphics.getColor()
