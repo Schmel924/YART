@@ -85,6 +85,7 @@ function GenerateAndPlaceMonsters(room)
 			name = "Enemy",
 			blocker = true,
 			power = math.random(1,10),
+			hp = Level,
 		})
 	end
 end
