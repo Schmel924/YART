@@ -56,6 +56,7 @@ function love.update(dt) end
 
 function GoToNextLvl(l)
 	Level = l + 1
+	Entities = {} 
 	Createmap()
 	Compute(Player, Fov_radius)
 	LinesCount = 4
