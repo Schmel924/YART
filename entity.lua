@@ -110,6 +110,12 @@ function DrawEntities()
 				love.graphics.draw(ImgFont, SCquad, (v.x-1) *Fontsize, (v.y-1) *Fontsize, 0, Scale, Scale)
 				love.graphics.setColor(White)
 			end	
+				elseif v.name == "Ladder" then
+			if Gamemap_vis[v.x][v.y] == true then
+				love.graphics.setColor(Green)
+				love.graphics.draw(ImgFont, LAquad, (v.x-1) *Fontsize, (v.y-1) *Fontsize, 0, Scale, Scale)
+				love.graphics.setColor(White)
+			end	
 		end
 	end
 	love.graphics.setColor(r,g,b,a)
