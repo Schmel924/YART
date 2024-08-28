@@ -96,12 +96,14 @@ local function GenerateDungeon()
 		GenerateAndPlaceThings(nroom)
 		if room_count == 1 then Player.x = nroom.cx; Player.y=nroom.cy else
 	GenerateAndPlaceMonsters(nroom) end
+		if room_count == Max_rooms then GenerateAndPlaceExit(nroom) end
 		rooms[room_count] = nroom
 		for i = nroom.x,nroom.x2-1 do
 			for j =nroom.y,nroom.y2-1 do
 				Gamemap[i][j] = Floor
 			end
 		end
+		
 		if rooms[room_count-1] then
 			plotline(rooms[room_count].cx,rooms[room_count].cy,rooms[room_count-1].cx,rooms[room_count-1].cy)
 		end
