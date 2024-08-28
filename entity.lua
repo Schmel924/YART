@@ -122,7 +122,8 @@ function DrawEntities()
 end
 
 function Hit(v)
-table.remove(Entities,v)
+Entities[v].hp = Entities[v].hp-1
+if Entities[v].hp == 0 then table.remove(Entities,v) end
 GrabLog("You killed "..v)
 end
 
