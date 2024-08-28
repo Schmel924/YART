@@ -40,6 +40,8 @@ function GrabItem()
 			elseif v.name == "Scroll" then
 				AddScroll(v.type)
 				table.remove(Entities, k)
+			elseif v.name == "Ladder" then
+				GoToNextLvl(Level)
 			end
 		
 		end
