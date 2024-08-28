@@ -32,6 +32,18 @@ function FindClosestEnemy()
 return target
 end
 
+function GenerateAndPlaceExit(room)
+	local x = math.random(room.x,room.x2-1)
+	local y = math.random(room.y, room.y2-1)
+	table.insert(Entities, {
+		x = x,
+		y = y,
+		name = "Ladder",
+		blocker = false,
+	})
+	
+end
+
 
 function GenerateAndPlaceThings(room)
 	for i = 1, math.random(Max_items_per_room), 1 do
